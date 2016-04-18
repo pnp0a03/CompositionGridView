@@ -38,7 +38,7 @@ namespace CompositionGridViewApp
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            // ファイルリストの取得 今回ここは主題では無いので略
+            // ファイルリストの取得 今回ここは主題では無いので省略
             _currentFolder = KnownFolders.PicturesLibrary;
             await loadFileItemsToGridViewAsync();
         }
