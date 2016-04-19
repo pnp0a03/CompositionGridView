@@ -90,6 +90,8 @@ namespace CompositionGridViewApp
 
                 // アニメで使うイージングの設定　ベジェ曲線でイージングのカーブを設定するタイプ CSSとかと同じ
                 // CSSのベジェ設定データをそのまま使い回せる
+                // 今回はこちらのデータを使用しました
+                // http://www.knockknock.jp/archives/184
 
                 // 加速度付けた動きがカッコイイ（と思う）のでそういうのを設定
                 var qubicEaseIn = _compositor.CreateCubicBezierEasingFunction(new Vector2(0.55f, 0.555f), new Vector2(0.675f, 0.19f));
@@ -105,7 +107,7 @@ namespace CompositionGridViewApp
                 // ItemIndex毎にアニメーションのスタートを少しづつ遅らせて順にびろろろろーんという効果を出す
                 offsetAnimation.DelayTime = TimeSpan.FromMilliseconds(itemIndex * GRIDITEM_ANIMATION_DELAYOFFSET);
                 // 初期値とStartAnimation
-                itemVisual.Offset = new Vector3(-100, 0, 0);
+                itemVisual.Offset = new Vector3(-300, 0, 0);
                 // 第一パラメータで渡しているのはこのitemVisualで動かすプロパティ名
                 itemVisual.StartAnimation("Offset.X", offsetAnimation);
 
