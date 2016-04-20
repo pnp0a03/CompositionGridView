@@ -108,8 +108,8 @@ namespace CompositionGridViewApp
                 offsetAnimation.DelayTime = TimeSpan.FromMilliseconds(itemIndex * GRIDITEM_ANIMATION_DELAYOFFSET);
                 // 初期値とStartAnimation
                 itemVisual.Offset = new Vector3(-300, 0, 0);
-                // 第一パラメータで渡しているのはこのitemVisualで動かすプロパティ名
-                itemVisual.StartAnimation("Offset.X", offsetAnimation);
+                // 第一パラメータで渡しているのはこのAnimationで動かすitemVisualのプロパティ名
+                itemVisual.StartAnimation(nameof(itemVisual.Offset) + "." + nameof(itemVisual.Offset.X), offsetAnimation);
 
                 // ２　回転 ここではZ軸でくるっと回す
                 KeyFrameAnimation rotAnimation = _compositor.CreateScalarKeyFrameAnimation();
@@ -120,7 +120,7 @@ namespace CompositionGridViewApp
                 //　Z軸に-90回転,を初期値とする
                 itemVisual.RotationAxis = new Vector3(0, 0f, 1f);
                 itemVisual.RotationAngleInDegrees = -90;
-                itemVisual.StartAnimation("RotationAngleInDegrees", rotAnimation);
+                itemVisual.StartAnimation(nameof(itemVisual.RotationAngleInDegrees), rotAnimation);
 
                 // ３　スケール ここでは3倍から1倍に縮小する
                 // ちなみに、1倍以下から拡大する場合描画が微妙に変…な場合がある
@@ -132,7 +132,7 @@ namespace CompositionGridViewApp
                 scaleAnimation.Duration = TimeSpan.FromMilliseconds(nAnimationDulation);
                 scaleAnimation.DelayTime = TimeSpan.FromMilliseconds(itemIndex * GRIDITEM_ANIMATION_DELAYOFFSET);
                 itemVisual.Scale = new Vector3(1, 1, 1);
-                itemVisual.StartAnimation("Scale", scaleAnimation);
+                itemVisual.StartAnimation(nameof(itemVisual.Scale), scaleAnimation);
 
                 // ４　フェード 透明度を0から1へ変化させる
                 KeyFrameAnimation fadeAnimation = _compositor.CreateScalarKeyFrameAnimation();
@@ -140,7 +140,7 @@ namespace CompositionGridViewApp
                 fadeAnimation.Duration = TimeSpan.FromMilliseconds(nAnimationDulation);
                 fadeAnimation.DelayTime = TimeSpan.FromMilliseconds(itemIndex * GRIDITEM_ANIMATION_DELAYOFFSET);
                 itemVisual.Opacity = 0f;
-                itemVisual.StartAnimation("Opacity", fadeAnimation);
+                itemVisual.StartAnimation(nameof(itemVisual.Opacity), fadeAnimation);
             }
         }
 
